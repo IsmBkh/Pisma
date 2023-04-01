@@ -150,7 +150,58 @@
 
 
         <!-- CONTACT -->
+<?php
 
+session_start();
+
+if(isset($_POST['send'])){
+    // extraction des variables
+    extract($_POST);
+    // verifions si les variables existent et ne sont pas vides
+    if(isset($prenom) && $prenom != "" &&
+        isset($nom) && $nom != "" &&
+        isset($email) && $email != "" &&
+        isset($message) && $message != ""){
+            // echo " tous les champs sont remplis";
+
+            // envoyé l'email 
+            $to = "ismailbkhwebdev@gmail.com";
+            // objet du mail 
+            $subject = "Vous avez reçu un Mail de : " . $email;
+
+            $message = "
+                <p>Vous avez reçu un message de <strong> ".$email."</strong></p>
+                <p><strong>Visiteur : </strong> ". $nom ." </p>
+                <p><strong>Message : </strong> ".$message."</p>  
+            ";
+
+            // Always set content-type when sending HTML email
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+            // More headers
+            $headers .= 'From: <'.$email.'>' . "\r\n";
+
+            // envoi du mail 
+            mail($to,$subject,$message,$headers);
+            //verification de l'envoi
+            if($send){
+                $_SESSION['success_messsage'] = "message envoyé";
+                $color = "green";
+            }else{
+                $info = "message non envoyé";
+                $color = "red";
+            }
+
+
+    }else {
+        //si elles sont vides
+        $infos = "veuillez remplir tous les champs !"; 
+        $color = "red";
+    }
+} 
+
+?>
 
 <section class="form" id="contact">
 
@@ -161,9 +212,14 @@
 
                      
         <p><abbr title="(obligatoire)" aria-hidden="true">*</abbr> Champs obligatoires</p>
+ <?php 
+// afficher le msg d'erreur
 
 
-        <form action="lib/traitement-contact.php" method="POST">
+
+ ?>
+
+        <form action="" method="POST">
             
             <div>
                 <label for="prenom"><abbr title="(obligatoire)">*</abbr> Prénom</label>
@@ -191,7 +247,7 @@
                 <textarea id="message" name="message" cols="20" rows="8" placeholder ="Votre message" required></textarea>
             </div>
 
-            <input type="submit" value ="Envoyer" name="submit" id="submit">
+            <input type="submit" value ="Envoyer" name="send" id="send">
 
         </form>
 
