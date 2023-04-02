@@ -241,6 +241,28 @@ main .skills .skills-types .background ul li:hover {
   transform: scale(1.1);
 }
 
+.request_message {
+  width: 400px;
+  text-transform: capitalize;
+  background-color: #fff;
+  text-align: center;
+  color: #27a158;
+  font-size: 13px;
+  padding: 14px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  animation: anime 0.5s ease-out;
+}
+
+/* animation message envoi */
+@keyframes anime {
+  from {
+    transform: translateY(-70px);
+  }
+} 
+
+
 main .form {
   padding: 5em;
   background-size: cover;

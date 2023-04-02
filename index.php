@@ -1,3 +1,54 @@
+<?php
+
+session_start();
+if(isset($_POST['send'])){
+    // extraction des variables
+    extract($_POST);
+    // verifions si les variables existent et ne sont pas vides
+    if(isset($prenom) && $prenom != "" &&
+        isset($nom) && $nom != "" &&
+        isset($email) && $email != "" &&
+        isset($message) && $message != ""){
+            // echo " tous les champs sont remplis";
+
+            // envoyé l'email 
+            $to = "ismailbkhwebdev@gmail.com";
+            // objet du mail 
+            $subject = "Vous avez reçu un Mail de : " . $email;
+
+            $message = "
+                <p>Vous avez reçu un message de <strong> ".$email."</strong></p>
+                <p><strong>Visiteur : </strong> ". $nom ." </p>
+                <p><strong>Message : </strong> ".$message."</p>  
+            ";
+
+            // Always set content-type when sending HTML email
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+            // More headers
+            $headers .= 'From: <'.$email.'>' . "\r\n";
+
+            // envoi du mail 
+            $send = mail($to,$subject,$message,$headers);
+            //verification de l'envoi
+            if(!$send){
+                $_SESSION['succes_messsage'] = "message envoyé";
+            }else{
+                $info = "message non envoyé";
+            }
+    }else {
+        //si elles sont vides
+        $info = "veuillez remplir tous les champs !"; 
+    }
+} 
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -150,60 +201,30 @@
 
 
         <!-- CONTACT -->
-<?php
 
-session_start();
-
-if(isset($_POST['send'])){
-    // extraction des variables
-    extract($_POST);
-    // verifions si les variables existent et ne sont pas vides
-    if(isset($prenom) && $prenom != "" &&
-        isset($nom) && $nom != "" &&
-        isset($email) && $email != "" &&
-        isset($message) && $message != ""){
-            // echo " tous les champs sont remplis";
-
-            // envoyé l'email 
-            $to = "ismailbkhwebdev@gmail.com";
-            // objet du mail 
-            $subject = "Vous avez reçu un Mail de : " . $email;
-
-            $message = "
-                <p>Vous avez reçu un message de <strong> ".$email."</strong></p>
-                <p><strong>Visiteur : </strong> ". $nom ." </p>
-                <p><strong>Message : </strong> ".$message."</p>  
-            ";
-
-            // Always set content-type when sending HTML email
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-            // More headers
-            $headers .= 'From: <'.$email.'>' . "\r\n";
-
-            // envoi du mail 
-            mail($to,$subject,$message,$headers);
-            //verification de l'envoi
-            if($send){
-                $_SESSION['success_messsage'] = "message envoyé";
-                $color = "green";
-            }else{
-                $info = "message non envoyé";
-                $color = "red";
-            }
-
-
-    }else {
-        //si elles sont vides
-        $infos = "veuillez remplir tous les champs !"; 
-        $color = "red";
-    }
-} 
-
-?>
 
 <section class="form" id="contact">
+
+    <?php 
+    // afficher le msg d'erreur
+        if(isset($info)) { ?>
+            <p class="request_message" style="color:red">
+                <?=$info?>
+            </p>
+
+        <?php
+        }
+    ?>
+    
+    <?php 
+    // afficher le msg de succes
+        if(isset( $_SESSION['succes_messsage'])) { ?>
+            <p class="request_message" style="color:green">
+                <?= $_SESSION['succes_messsage']?>
+            </p>
+        <?php
+        }
+    ?>
 
     <div class="container">
 
@@ -212,12 +233,6 @@ if(isset($_POST['send'])){
 
                      
         <p><abbr title="(obligatoire)" aria-hidden="true">*</abbr> Champs obligatoires</p>
- <?php 
-// afficher le msg d'erreur
-
-
-
- ?>
 
         <form action="" method="POST">
             
@@ -258,9 +273,6 @@ if(isset($_POST['send'])){
 
 </main>
 
-
-
- 
 
 </body>
 </html>
