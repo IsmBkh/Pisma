@@ -308,3 +308,16 @@ main .form .container div {
 .container h2 {
   text-align: center;
 }
+
+.okay {
+  background-image: url(../img/sendmsg.jpg);
+  /* display: flex; 
+  flex-direction: column;
+  text-align: center;
+  justify-content: center; 
+  align-items: center; 
+  background-size: cover; 
+  background-position: center; 
+  padding: 20px; 
+  height: 430px; */
+}

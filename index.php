@@ -34,6 +34,9 @@ if(isset($_POST['send'])){
             //verification de l'envoi
             if(!$send){
                 $_SESSION['succes_messsage'] = "message envoyé";
+                // REDIRECTION 
+                header("location:index.php");
+
             }else{
                 $info = "message non envoyé";
             }
