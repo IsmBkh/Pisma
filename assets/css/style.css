@@ -241,7 +241,7 @@ main .skills .skills-types .background ul li:hover {
   transform: scale(1.1);
 }
 
-.request_message {
+form p .request_message {
   width: 400px;
   text-transform: capitalize;
   background-color: #fff;
