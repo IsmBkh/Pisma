@@ -15,10 +15,12 @@
     <main>
         <div class="okay">
 
-            <h2>Votre message a bien été envoyé</h2>
-            <a href="index.php">Cliqué ici pour etre redirégé vers l'accueil</a>
+            <h3>Votre message a bien été envoyé</h3>
 
         </div>
+
+        <a href="index.php" class="back">Retour à l'Accueil</a>
+
     </main>
 </body>
 </html>

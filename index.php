@@ -35,7 +35,7 @@ if(isset($_POST['send'])){
             if(!$send){
                 $_SESSION['succes_messsage'] = "message envoyé";
                 // REDIRECTION 
-                header("location:index.php");
+                header("location:validation.php");
 
             }else{
                 $info = "message non envoyé";
@@ -73,7 +73,7 @@ if(isset($_POST['send'])){
             <a href="index.php" class="logo text-decoration-none nav-link btn-light" class="myname">Ismaïl Bakhtaoui</a>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item p-2">
-                        <a href="index.php" class="nav-link">Mes projets</a>
+                        <a href="projets.php" class="nav-link">Mes projets</a>
                     </li>
                     <li class="nav-item p-2">
                         <a href="index.php?page=contact" class="nav-link">Contact</a>
@@ -105,13 +105,16 @@ if(isset($_POST['send'])){
                 <div class="info">
                     <h3>Mon parcours</h3>
                     <p>
-                        Après une expérience en comptabilité qui m'a permis de développer un sens de l'organisation et du détail, j'ai décidé de me consacrer à ma passion pour l'informatique.
+                        Après plusieurs années d'études ainsi qu'une expérience en comptabilité chez Lafarge Holcim et OGF qui m'ont permis de développer un sens de l'organisation et du détail, j'ai décidé de me consacrer à ma passion pour l'informatique.
                     </p>
                     <p>
-                    Aujourd'hui en reconversion professionnelle, très motivé et rigoureux, j'apprends actuellement plusieurs languages et frameworks en autodidact afin de développer mon portfolio dans un premier temps et dans le but de proposer mes services à mes amis dans le court terme.
+                        En effet, Durant la dématérialisation de la comptabilité au sein d'OGF et en observant le developpement des IA à travers le monde, j'ai réalisé l'intérêt que sucite le domaine informatique en moi.
+                    </p>
+                    <p>
+                        Aujourd'hui en reconversion professionnelle, très motivé et rigoureux, j'apprends actuellement plusieurs languages et frameworks en autodidact afin de développer mon portfolio dans un premier temps et dans le but de proposer mes services à mes amis dans le court terme.
                     </p>
                     <p class="font-italic">
-                        Ps : Ce site est en cours de développement et je projete d'ajouter de nombreuses fonctionnalités axé Backend (Espace connexion, Backoffice...)
+                        Ps : Ce site est en cours de développement et je prévois d'ajouter de nombreuses fonctionnalités axé Backend (Espace connexion, Backoffice...)
                     </p>
 
                     <h3>Soft skills</h3>
@@ -191,8 +194,6 @@ if(isset($_POST['send'])){
                     <div>
                         <h3>Framework</h3>
                         <ul>
-                            <li>Vue.JS</li>
-                            <li>Symfony</li>
                             <li>Bootstrap</li>
                             <li>jQuery</li>
                         </ul>
